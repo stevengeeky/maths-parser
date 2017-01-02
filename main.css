@@ -1,0 +1,42 @@
+body {
+    background:lightgray;
+    padding:0;
+    text-align:center;
+}
+
+.terminal {
+    display:inline-block;
+    width:290px;
+    border:1px solid gray;
+    padding:4px;
+    background:white;
+}
+
+#display {
+    text-align:left;
+    padding:4px;
+    background:radial-gradient(#ddd, white);
+    border:1px solid darkgray;
+    margin:0;
+    height:300px;
+    overflow:auto;
+    font:16px Computer Modern;
+    font-style:italic;
+}
+
+#query {
+    padding:4px;
+    border:1px solid #aaa;
+    border-radius:3px;
+    background:white;
+    width:100%;
+    box-sizing:border-box;
+    font:17px Computer Modern;
+    font-style:italic;
+}
+#query:hover {
+    border:1px solid #888;
+}
+#query:focus {
+    border:1px solid #a0a0ff;
+}
