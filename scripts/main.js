@@ -182,8 +182,9 @@ function docommand(s)
 function helptext()
 {
     var out = [];
-    var i, w = 22;
-    function row(a, b) { out.push("  " + a + Array(Math.max(1, w - a.length)).join(" ") + b); }
+    var i, w = 0;
+    for (i = 0; i < BUILTINS.length; i++) w = Math.max(w, BUILTINS[i][0].length + 3);
+    function row(a, b) { out.push("  " + a + Array(Math.max(2, w - a.length)).join(" ") + b); }
 
     out.push("commands");
     for (i = 0; i < COMMANDS.length; i++) row(COMMANDS[i][0], COMMANDS[i][1]);
@@ -865,9 +866,9 @@ function lint(s)
     }
     var w = s.match(/(^\s*(and|or|xor)\b)|(\b(and|or|xor)\s*$)|(\b(and|or|xor)\s+(and|or|xor)\b)/i);
     if (w) throw new ParseError("expected a value " + (w[1] ? "before " + w[2] : w[3] ? "after " + w[4] : "between " + w[6] + " and " + w[7]), w.index + (w[1] ? w[0].length - w[2].length : 0));
-    if (depth > 0) throw new ParseError("missing ) for this (", opens[opens.length - 1]);
     if (prev == "" ) throw new ParseError("nothing to evaluate", 0);
     if (isop(prev) || prev == "+" || prev == "-" || prev == "," || prev == "=") throw new ParseError("expected a value after " + prev, pi);
+    if (depth > 0) throw new ParseError("missing ) for this (", opens[opens.length - 1]);
 }
 
 function trim(s) { return ("" + s).replace(/^\s+|\s+$/g, ""); }
