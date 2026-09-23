@@ -189,7 +189,7 @@ function helptext()
     out.push("commands");
     for (i = 0; i < COMMANDS.length; i++) row(COMMANDS[i][0], COMMANDS[i][1]);
     out.push("");
-    out.push("operators   + - * / % ^ !   and & or | xor   (parentheses)   2x 2(3) (2)(3) mean multiply");
+    out.push("operators   + - * / % ^ !   and & or | xor   ( )   2x 2(3) (2)(3) x y all multiply");
     out.push("            ^ groups right: 2^3^2 = 512   -2^2 = -4   5! = 120   7 % 3 = 1");
     out.push("");
     out.push("constants   " + CONSTANTS.join("  ") + "   (ans = the last result)");
@@ -275,7 +275,7 @@ var CONSTANTS = ["pi", "tau", "e", "phi", "ans"];
 // name, signature, description, min args, max args
 var BUILTINS = [
     ["sin(x) cos(x) tan(x)",       "trig, x in radians"],
-    ["asin(x) acos(x) atan(x)",    "inverse trig; atan(y, x) is the two-argument form"],
+    ["asin(x) acos(x) atan(x)",    "inverse trig; atan(y, x) is two-arg"],
     ["sinh(x) cosh(x) tanh(x)",    "hyperbolic"],
     ["deg(x)  rad(x)",             "radians to degrees, degrees to radians"],
     ["sqrt(x)  root(x, n)",        "square root, nth root"],
@@ -284,8 +284,8 @@ var BUILTINS = [
     ["abs(x)  sign(x)",            "absolute value, -1 0 or 1"],
     ["floor(x) ceil(x) round(x) trunc(x)", "to an integer"],
     ["min(a, b, ...)  max(a, b, ...)", "smallest, largest"],
-    ["mod(a, b)",                  "remainder with the sign of b (a % b keeps the sign of a)"],
-    ["gcd(a, b, ...)  lcm(a, b, ...)", "greatest common divisor, least common multiple"],
+    ["mod(a, b)",                  "remainder with the sign of b"],
+    ["gcd(a, b, ...)  lcm(a, b, ...)", "gcd, lcm of all the arguments"],
     ["fact(n)  or  n!",            "factorial (gamma for non-integers)"],
     ["ncr(n, r)  npr(n, r)",       "combinations, permutations"],
     ["sum(i=1, 10, i^2)",          "add i^2 for i from 1 to 10"],
