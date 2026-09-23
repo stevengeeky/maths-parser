@@ -25,7 +25,7 @@ window.onload = function(e)
     document.onclick = function(ev)
     {
         var t = ev.target;
-        if (t && t.className && ("" + t.className).indexOf("in") != -1 && t.parentNode == display)
+        if (t && t.classList && t.classList.contains("in") && t.parentNode == display)
         {
             inp.value = t.textContent.replace(/^> /, "");
             inp.focus();
